@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.7" />
+    <meta content="NEXUS CUMUNITY - MUSIC" property="og:title">
+    <meta content="A tecnologia move o mundo, NEXUS MÚSIC também." property="og:description">
+    <meta content='https://telegra.ph/file/d9ff95e4db542069612c0.jpg' property="og:image">
+    <meta name="csrf-token" content="6LclkvcpAAAAAIoATPVpPidxpRNM9ZVn8O-eRNb0">
+    <title>NEXUS CUMUNITY - MUSIC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://blikerhost.com.br/css/app.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+body {color: black}
+#query {
+margin-bottom: 5%
+}
+
+.video-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: auto;
+}
+
+.video-item {
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  border: 1px solid #333;
+  overflow: hidden;
+  width: calc(50% - 10px); /* Para ter dois vídeos por fileira */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.thumbnail {
+  position: relative;
+  cursor: pointer;
+width: 256px;
+height: 144px;
+  overflow: hidden;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-duration {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+margin-right: 5%;
+}
+
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s;
+}
+
+.play-icon:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+.video-info {
+  padding: 15px;
+}
+
+.video-info h4 {
+  font-size: 16px;
+  margin: 0 0 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.short-description {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.video-meta {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.download-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.download-buttons a {
+  flex: 1;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.download-buttons a:hover {
+  background-color: #444;
+}
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            async function exibir(query) {
+                try {
+                    const fetchJson = async (url) => (await fetch(url)).json();
+                    const apiKey = "nexusmusica_ofc";
+                    const apiUrl = `http://br1.blikerhost.com.br:10009/youtube/search?query=${encodeURIComponent(query)}&apikey=${apiKey}`;
+
+                    const data = await fetchJson(apiUrl);
+
+                    const videosContainer = document.getElementById("video-list");
+                    if (!videosContainer) {
+                        console.error("Elemento com id 'video-list' não encontrado.");
+                        return;
+                    }
+
+                    videosContainer.innerHTML = "";
+
+                    if (data.resultado && data.resultado.length > 0) {
+                        data.resultado.forEach((resultado) => {
+                            if (resultado.type === "video") {
+                                videosContainer.innerHTML += `
+                                    <div class="video-item">
+                                        <div class="thumbnail">
+                                            <img src="${resultado.thumbnail}" alt="Thumbnail">
+                                            <span class="video-duration">${resultado.timestamp}</span>
+                                            <span class="play-icon" data-url="${resultado.url}">▶</span>
+                                        </div>
+                                        <div class="video-info">
+                                            <h4>${resultado.title}</h4>
+                                            <p class="short-description">✧༺VIX ZAP OFC</p>
+                                            <p class="video-meta">Canal • ${resultado.views} visualizações • ${resultado.ago}</p>
+                                            <div class="download-buttons">
+                                                <a href="http://br1.blikerhost.com.br:10009/youtube/mp3?url=${encodeURIComponent(resultado.url)}&apikey=nexusmusica_ofc" download="${resultado.title}.mp3">Baixar MP3</a>
+                                                <a href="http://br1.blikerhost.com.br:10009/youtube/mp4?url=${encodeURIComponent(resultado.url)}&apikey=nexusmusica_ofc" download="${resultado.title}.mp4">Baixar MP4</a>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                            }
+                        });
+                    } else {
+                        videosContainer.innerHTML = "<p>Nenhum vídeo encontrado.</p>";
+                    }
+                } catch (error) {
+                    console.error("Erro ao buscar vídeos:", error);
+                }
+            }
+
+            function assistir(url) {
+                Swal.fire({
+                    title: 'Reproduzindo',
+                    html: `
+                        <video width="100%" controls autoplay>
+                            <source src="http://br1.blikerhost.com.br:10009/youtube/mp4?url=${encodeURIComponent(url)}&apikey=nexusmusica_ofc" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
+                    `,
+                    showConfirmButton: true,
+                    width: '600px',
+                    padding: '1rem',
+                });
+            }
+
+            function pesquisar() {
+                const nome = document.getElementById("query").value;
+                if (nome.trim().length > 0) {
+                    exibir(nome);
+                }
+            }
+
+            document.getElementById("query").addEventListener("input", function () {
+                clearTimeout(window.searchTimeout);
+                window.searchTimeout = setTimeout(pesquisar, 1500);
+            });
+
+            exibir("funk");
+
+            document.getElementById("video-list").addEventListener("click", function (event) {
+                if (event.target.classList.contains("play-icon")) {
+                    const url = event.target.getAttribute("data-url");
+                    assistir(url);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900 dark:text-gray-300 text-gray-700">
+        <div class="max-w-4xl flex-1 h-full mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
+            <div class="flex flex-col overflow-y-auto md:flex-row">
+                <div class="h-32 md:h-auto md:w-1/2">
+                    <h1 style="text-align: center; font-size: 230%; margin-top: 10%;" class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">MÚSICAS DOWNLOADS</h1>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="w-full p-6 sm:p-12">
+                        <h1 style="font-size: 100%" class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">Músicas/Vídeos | Downloads MP3 & MP4</h1>
+                        <input type="hidden" name="_token" value="6LclkvcpAAAAAIoATPVpPidxpRNM9ZVn8O-eRNb0">
+                        <label class="block text-sm">
+<span class="text-gray-700 dark:text-gray-400">Pesquisar📍</span>
+                            <input type="text" name="username" class="block w-full text-sm dark:border-gray-600 mt-1 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray rounded-md shadow-sm border-gray-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required autofocus id="query">
+                        </label>
+                        <div class="video-list" id="video-list"></div>
+                        <hr class="my-8">
+                        <div class="flex justify-between mt-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery primeiro, depois o Popper.js e depois o Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

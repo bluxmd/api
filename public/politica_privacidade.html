@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOJA DO BLACKZIN</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            letter-spacing: 5px;
+            text-align: center;
+            animation: colorChange 5s infinite;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes colorChange {
+            0% { color: #ff4747; }
+            25% { color: #ffdd57; }
+            50% { color: #57ff57; }
+            75% { color: #57d3ff; }
+            100% { color: #ff4747; }
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .product {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .product h2 {
+            margin: 15px 0;
+            font-size: 1.5rem;
+            color: #ff4747;
+            transition: color 0.3s;
+        }
+
+        .product:hover h2 {
+            color: #ff1a1a;
+        }
+
+        .product p {
+            margin: 10px 0;
+            font-size: 1rem;
+            color: #bbbbbb;
+        }
+
+        .buy-button {
+            padding: 12px 20px;
+            font-size: 1rem;
+            background: linear-gradient(145deg, #ff4747, #ff1a1a);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(145deg, #ff1a1a, #ff4747);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Efeitos de fundo no container */
+        .product::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            transition: transform 0.6s;
+        }
+
+        .product:hover::before {
+            transform: scale(1.5);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .buy-button {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>LOJA DO BLACKZIN</h1>
+
+    <div class="container">
+        <div class="product">
+            <h2>API KEY 5R$ 𝙋𝙍𝘼𝙏𝘼</h2>
+            <p>Key personalizada com 5000 requets<br>SUPORTE X</p>
+            <button class="buy-button" onclick="buyProduct('558491430819', 'Key 𝙋𝙍𝘼𝙏𝘼')">COMPRAR</button>
+        </div>
+        
+        <div class="product">
+            <h2>API KEY 10R$ 𝙊𝙐𝙍𝙊</h2>
+            <p>Key personalizada com 10000 requets<br>SUPORTE ✓</p>
+            <button class="buy-button" onclick="buyProduct('558491430819', 'Key 𝙊𝙐𝙍𝙊')">COMPRAR</button>
+        </div>
+        
+        <div class="product">
+            <h2>API KEY 20R$ 𝙋𝙇𝘼𝙏𝙄𝙉𝘼</h2>
+            <p>Key personalizada com 20000 requets<br>SUPORTE ✓</p>
+            <button class="buy-button" onclick="buyProduct('558491430819', 'Key 𝙋𝙇𝘼𝙏𝙄𝙉𝘼')">COMPRAR</button>
+        </div>
+        
+        <div class="product">
+            <h2>API KEY 25R$ 𝘿𝙄𝘼𝙈𝘼𝙉𝙏𝙀</h2>
+            <p>Key personalizada com 25000 requets<br>SUPORTE ✓</p>
+            <button class="buy-button" onclick="buyProduct('558491430819', 'Key 𝘿𝙄𝘼𝙈𝘼𝙉𝙏𝙀')">COMPRAR</button>
+        </div>
+        
+        <div class="product">
+            <h2>API KEY 30R$ 𝙈𝙀𝙎𝙏𝙍𝙀</h2>
+            <p>Key personalizada com 30000 requets<br>SUPORTE ✓</p>
+            <button class="buy-button" onclick="buyProduct('558491430819', 'Key 𝙈𝙀𝙎𝙏𝙍𝙀')">COMPRAR</button>
+        </div>
+        
+        <div class="product">
+            <h2>API KEY 40R$ 𝙀𝙇𝙄𝙏𝙀</h2>
+            <p>Key personalizada (PERMANENTE) <br>SUPORTE ✓</p>
+            <button class="buy-button" onclick="buyProduct('558491430819', 'Key 𝙀𝙇𝙄𝙏𝙀')">COMPRAR</button>
+        </div>
+        
+                <div class="product">
+            <h2>SITE API 85R$ 𝙀𝙇𝙄𝙏𝙀 𝙎𝙐𝙋𝙍𝙀𝙈𝙊</h2>
+            <p>SITE DA API DESCRIPTOGRAFADA <br>SUPORTE ✓</p>
+            <button class="buy-button" onclick="buyProduct('558491430819', 'O SITE API 𝙀𝙇𝙄𝙏𝙀 𝙎𝙐𝙋𝙍𝙀𝙈𝙊')">COMPRAR</button>
+        </div>
+        
+    </div>
+
+    <script>
+        function buyProduct(phoneNumber, productDescription) {
+            const message = `Olá, estou interessado em comprar ${productDescription}`;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>

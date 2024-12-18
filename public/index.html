@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<!--- Entao pegou código fonte ne kkkkk deixa meus créditos?? tmj me chama no pv pra mim ver quem pegou kkkkkk --->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPKU BLACK API| HOME</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #121212; /* Fundo escuro */
+            color: #f0f0f0; /* Cor clara para o texto */
+            overflow-x: hidden;
+        }
+        
+        .gallery {
+            width: 70%; /* Aumentado o tamanho do contêiner principal */
+            margin-top: 20px;
+        }
+
+        .photo-card {
+            background-color: #1e1e1e; /* Fundo escuro para os cartões */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra mais forte */
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            transform: translateY(100px); /* Inicia abaixo da tela */
+            opacity: 0; /* Invisível no início */
+            transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 16/9; /* Garantir que a imagem fique no formato deitada */
+        }
+
+        .photo-card .content {
+            padding: 20px; /* Aumentado o padding interno */
+        }
+
+        .photo-card h2 {
+            margin: 0;
+            font-size: 1.7rem; /* Aumentado o tamanho do título */
+            color: #ffffff; /* Cor branca para o título */
+        }
+
+        .photo-card p {
+            margin: 10px 0 0;
+            font-size: 1.1rem; /* Aumentado o tamanho da descrição */
+            color: #cccccc; /* Cor clara para a descrição */
+        }
+
+        /* Estilo para os botões em azul */
+        .photo-card button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #f705e7; /* Azul padrão */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .photo-card button:hover {
+            background-color: #f705e7; /* Azul mais escuro no hover */
+        }
+
+        .button-container {
+            text-align: center;
+            padding-bottom: 15px;
+        }
+
+        /* Classe para a animação ao rolar */
+        .animate {
+            transform: translateY(0); /* Move de baixo para a posição original */
+            opacity: 1; /* Torna o conteúdo visível */
+        }
+
+        /* Animação de rolagem - leve zoom ao rolar */
+        .photo-card.in-view {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gallery">
+        <!-- Primeiro Contêiner -->
+        <div class="photo-card">
+            <img src=https://i.imgur.com/x7wQWpq.jpeg alt="Foto 1">
+            <div class="content">
+                <h2>SITE API</h2>
+                <p>black api desenvolvimento pelo blackzin</p>
+            </div>
+            <div class="button-container">
+                <button onclick="window.location.href='docs.html'">Acessar site</button> <!-- Botão que abre docs.html -->
+            </div>
+        </div>
+
+    <script>
+        // Animação ao carregar a página
+        document.addEventListener("DOMContentLoaded", function() {
+            const cards = document.querySelectorAll('.photo-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animate');
+                }, index * 200); // Cria um pequeno atraso entre os cartões
+            });
+        });
+
+        // Função para checar quando o usuário está rolando
+        function isInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // Verificar a rolagem da página
+        window.addEventListener('scroll', function() {
+            const cards = document.querySelectorAll('.photo-card');
+            cards.forEach(card => {
+                if (isInViewport(card)) {
+                    card.classList.add('in-view');
+                } else {
+                    card.classList.remove('in-view');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

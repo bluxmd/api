@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+
+<html lang="pt-br" class="">
+<head>
+ <script src="./js/fetchjson.js"></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1shrink-to-fit=no">
+<meta class="desc" property="og:url" name="og:url" content="[+] Desenvolvido por Fantasma - vix zap[+]">
+<script src="js/twk-main.js" charset="UTF-8" crossorigin="*"></script><script src="js/twk-vendor.js" charset="UTF-8" crossorigin="*"></script><script src="js/twk-chunk-vendors.js" charset="UTF-8" crossorigin="*"></script><script src="js/twk-chunk-common.js" charset="UTF-8" crossorigin="*"></script><script src="js/twk-runtime.js" charset="UTF-8" crossorigin="*"></script><script src="js/twk-app.js" charset="UTF-8" crossorigin="*"></script><script async="" src="js/1f3t1darb" charset="UTF-8" crossorigin="*"></script>
+<!--FIM-->
+	    <style>#loading{display:block;}#conteudo{display:none;}</style>
+    
+    <script>
+        window.addEventListener('load', function() {  
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('conteudo').style.display = 'inline';
+            }, 4000); // Tempo de 4 segundos, ajuste conforme necessário
+        });
+    </script>{
+	<link rel="icon" href="https://telegra.ph/file/8f414638b8bbed7ab3055.jpg" type="image/x-icon">
+<title class="titulo">BEM VINDOS A APIS DA NEXUS🏆</title>
+<link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+<link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+<link rel="stylesheet" href="vendors/owl-carousel-2/owl.carousel.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Original+Surfer&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vendors/owl-carousel-2/owl.theme.default.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="shortcut icon" href="https://telegra.ph/file/8f414638b8bbed7ab3055.jpg"><link rel="stylesheet" href="ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
+<script src="ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+<meta class="desc" name="description" content="dono: Fantasma - Vix zap">
+<meta property="og:image" content="https://telegra.ph/file/8f414638b8bbed7ab3055.jpg">
+<body>
+	
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    async function buscarInformacoesUsuario(id, senha) {
+        const url = `/infouser?id=${id}&senha=${senha}`;
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                const errorMessage = await response.json();
+                throw new Error(errorMessage.error || 'Erro ao buscar informações do usuário.');
+            }
+            const userData = await response.json();
+            console.log('User data received:', userData);
+            var username = userData.username;
+            var email = userData.email;
+            var senha = userData.senha; // Verifique se é necessário armazenar a senha
+            var pais = userData.pais;
+            var regiao = userData.regiao;
+            var loc = userData.localizacao;
+            var fuso = userData.fuso_horario;
+            var apikey = userData.apikey || "Voc�, n�o definiu uma apikey"; // Verificar se existe uma API Key
+            const usernameElement = document.getElementById('username');
+            const emailElement = document.getElementById('email');
+            const apikeyElement = document.getElementById('apikey');
+
+            if (usernameElement) {
+                usernameElement.innerText = username;
+            } else {
+                console.error("Elemento 'username' não encontrado no DOM.");
+            }
+
+            if (emailElement) {
+                emailElement.innerText = email;
+            } else {
+                console.error("Elemento 'email' não encontrado no DOM.");
+            }
+
+            if (apikeyElement) {
+                apikeyElement.innerText = apikey;
+            } else {
+                console.error("Elemento 'apikey' não encontrado no DOM.");
+            }
+        } catch (error) {
+            console.error('Erro ao buscar informações do usuário:', error.message);
+            // Tratar o erro conforme necessário
+        }
+    }
+
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+    }
+
+    // Uso
+    const userID = getCookie('userID');
+    const userPassword = 'sistemuserid'; // Substitua pela senha correta
+    console.log(`Cookie userID: ${userID}`);
+
+    if (userID) {
+        buscarInformacoesUsuario(userID, userPassword);
+    } else {
+        console.error('userID cookie not found.');
+    }
+    })
+    </script>
+<script charset="utf-8" src="js/twk-chunk-2d0d2b7c.js"></script><script charset="utf-8" src="js/twk-chunk-2d224aff.js"></script><script charset="utf-8" src="js/twk-chunk-f1596d96.js"></script><script charset="utf-8" src="js/twk-chunk-48f46bef.js"></script><script charset="utf-8" src="js/twk-chunk-4fe9d5dd.js"></script><script charset="utf-8" src="js/twk-chunk-2d0b9454.js"></script><script charset="utf-8" src="js/twk-chunk-f163fcd0.js"></script><script charset="utf-8" src="js/twk-chunk-32507910.js"></script>
+
+  <style>
+    /* Estilo para a animação de entrada */
+    @keyframes slide-in-left {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    /* Estilo para o toast */
+    .toast {
+      position: relative;
+      z-index: 1050;
+      width: 300px;
+      animation: slide-in-left 0.5s forwards ease-out;
+      left: -100%; /* Inicialmente fora da tela à esquerda */
+    }
+
+    /* Estilo para o cabeçalho do toast */
+    .toast-header {
+      background-color: #6c757d; /* Cor de fundo do cabeçalho (cinza escuro) */
+      color: #ffffff; /* Cor do texto do cabeçalho (branco) */
+      border-color: #6c757d; /* Cor da borda do cabeçalho */
+    }
+
+    /* Estilo para o corpo do toast */
+    .toast-body {
+      background-color: #343a40; /* Cor de fundo do corpo do toast (cinza mais escuro) */
+      color: #ffffff; /* Cor do texto do corpo do toast (branco) */
+    }
+    
+        .loader-container {
+    text-align: center;
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Cor clara para o fundo da borda */
+    border-top: 16px solid #ff4c4c; /* Cor vermelha para a parte superior da borda */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#idgs {
+    margin-top: 20px;
+    font-size: 18px;
+}
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+  </style>
+  </style>
+<div id="loading" style="display: block">
+    <div class="loader"></div>
+        <p id="idgs">Carregando...</p>
+</div>
+
+<!-- COLOQUE A DIV "loading" ACIMA DE TODO O CONTEUDO DO SITE (ABAIXO DA <body>) -->
+
+<div id="conteudo" style="display: none">
+  <div class="position-fixed bottom-0 start-0 p-3">
+    <div id="toast-container" aria-live="polite" aria-atomic="true">
+      <div class="toast bg-dark text-white" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="15000">
+        <div class="toast-header">
+          <img src="..." class="rounded me-2" alt="...">
+          <strong class="me-auto">Bootstrap</strong>
+          <small>11 mins ago</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          ⚡ SEJA BEM-VINDO À NEXUS API REST 👑
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="container-fluid page-body-wrapper">
+<nav class="navbar p-0 fixed-top d-flex flex-row">
+<div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+<a class="navbar-brand brand-logo-mini" href="docs.html"><big><i class="mdi mdi-signal-variant text-primary"></i></big></a>
+</div>
+<div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+<button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+<span class="mdi mdi-format-list-bulleted"></span>
+</button>
+<ul class="navbar-nav w-100">
+<li class="nav-item w-100">
+<form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+<input type="text" class="form-control" placeholder="Criador ⇨ vix zap">
+</form>
+</li>
+</ul>
+<ul class="navbar-nav navbar-nav-right">
+<li class="nav-item nav-settings d-none d-lg-block">
+<a class="nav-link" href="#">
+<i class="mdi mdi-view-grid"></i>
+</a>
+</li>
+<li class="nav-item dropdown border-left">
+<a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+<i class="mdi mdi-bell"></i>
+<span class="count bg-danger"></span>
+</a>
+<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+<h6 class="p-3 mb-0">Info</h6>
+<div class="dropdown-divider"></div>
+
+<a class="dropdown-item preview-item">
+<div class="preview-thumbnail">
+<div class="preview-icon bg-dark rounded-circle">
+<i class="mdi mdi-wrench text-danger"></i>
+</div>
+</div>
+<div class="preview-item-content">
+<p id="nomeapi" class="preview-subject mb-1">NEXUS APIS 💕</p>
+<p class="text-muted ellipsis mb-0"></p>
+</div>
+<a class="dropdown-item preview-item">
+<div class="preview-thumbnail">
+<div class="preview-icon bg-dark rounded-circle">
+<i class="mdi mdi-wrench text-danger"></i>
+</div>
+</div>
+    <div class="preview-item-content">
+
+<p class="preview-subject mb-1">+41 APIS - FILTROS PARA IMAGEM✅</p>
+
+<p class="text-muted ellipsis mb-0"></p>
+
+</div>
+
+<a class="dropdown-item preview-item">
+
+<div class="preview-thumbnail">
+
+<div class="preview-icon bg-dark rounded-circle">
+
+<i class="mdi mdi-wrench text-danger"></i>
+
+</div>
+
+</div>
+<div class="preview-item-content">
+<p class="preview-subject mb-1">+10 APIS - GERAR DB DE DADOS PESSOAIS✅</p>
+<p class="text-muted ellipsis mb-0"></p>
+</div>
+<a class="dropdown-item preview-item">
+<div class="preview-thumbnail">
+<div class="preview-icon bg-dark rounded-circle">
+<i class="mdi mdi-wrench text-danger"></i>
+</div>
+</div>
+
+<div class="preview-item-content">
+<p class="preview-subject mb-1">+20 APIS - CORRIGIRAM FUGURINHAS - attp✅</p>
+<p class="text-muted ellipsis mb-0"></p>
+</div>
+<a class="dropdown-item preview-item">
+<div class="preview-thumbnail">
+<div class="preview-icon bg-dark rounded-circle">
+<i class="mdi mdi-wrench text-danger"></i>
+</div>
+</div>
+
+<div class="preview-item-content">
+<p class="preview-subject mb-1">+20 APIS - GERADORES DE DADOS PESSOAIS✅</p>
+<p class="text-muted ellipsis mb-0"></p>
+</div>
+<a class="dropdown-item preview-item">
+<div class="preview-thumbnail">
+<div class="preview-icon bg-dark rounded-circle">
+<i class="mdi mdi-wrench text-danger"></i>
+</div>
+</div>
+
+<div class="preview-item-content">
+<p class="preview-subject mb-1">API NOVAS - GERADORES DE DADOS PESSOAIS ✅</p>
+<p class="text-muted ellipsis mb-0"></p>
+</div>
+<a class="dropdown-item preview-item">
+<div class="preview-thumbnail">
+<div class="preview-icon bg-dark rounded-circle">
+<i class="mdi mdi-wrench text-danger"></i>
+</div>
+</div>
+<div class="preview-item-content">
+<p class="preview-subject mb-1">NOVO SISTEMA - SISTEMA DE LOGIN & REGISTRO✅</p>
+<p class="text-muted ellipsis mb-0"></p>
+</div>
+
+</a>
+</div></li>
+<li class="nav-item dropdown">
+<a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+<p class="mb-5 d-none d-sm-block navbar-profile-name">MELHORES APIS DA NEXUS</p>
+</a>
+</li>
+
+</ul>
+<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+</button>
+</div>
+</nav>
+<div class="main-panel">
+<div class="content-wrapper">
+<div class="row">
+<div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+
+  <br/>
+  
+<div class="">
+<div class="">
+<h5 class=""></h5>
+<h5 class=""> </h5> 
+<div class="">
+<div class="">
+<div class="">
+
+<script type="text/javascript">
+var userip;
+</script>
+<script type="text/javascript" src="https://l2.io/ip.js?var=userip"></script>
+<h3 class="mb-0" ><script type="text/javascript">
+
+</script></h3>
+
+</div>
+<font face="Original Surfer" class=""> </font>
+</div>
+<div class="">
+<div class="> 
+<span class=""></span>
+</div>
+</div>
+</div>
+<font face="Original Surfer" class=""></font>
+</div>
+</div>
+</div>
+
+<div style="text-align: center;" class="col-xl-3 col-sm-6 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+	<h5 class="font-weight-bold text-danger text-uppercase"></h5>
+	  <img style="height: 80%; width:50%;" class="img-xs rounded-circle" src="https://telegra.ph/file/8f414638b8bbed7ab3055.jpg" alt="">
+       <h5 style="margin-top: 10px;" class="font-weight-bold text-danger text-uppercase">USERNAME:</h5> 
+      <div class="row">
+        <div class="col-9">
+          <div class="d-flex align-items-center align-self-start">
+            <h6 id="username" class="mb-0"></h6>
+          </div>
+        </div>
+        <div class="col-3">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+<div class="card">
+<div class="card-body">
+<h5 class="font-weight-bold text-danger text-uppercase"></h5>
+       <h5 class="font-weight-bold text-danger text-uppercase">EMAIL:</h5> 
+<div class="row">
+<div class="col-9">
+<div class="d-flex align-items-center align-self-start">
+<h3 class="mb-0" ><audio autoplay> <!--agora com autoplay e sem controls-->
+<source src="http://br1.infinityhost.tech:8904/src/musica.mp4" type="audio/mp4">
+</audio></h3>
+            <h6  id="email" class="mb-0"></h6>
+</div>
+</div>
+<div class="col-3">
+<div class="icon icon-box-success ">
+<span class="mdi mdi-cloud-check"></span>
+</div>
+</div>
+</div>
+
+<font face="Original Surfer" class="text-muted font-weight-normal">Contador de usuários</font>
+          <span id="userCount" class="fs-1" style="font-size: 10px; text-align: center; margin: 0px;">Carregando...</span>
+</div>
+</div>
+<div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+	
+</div>
+</div>              
+
+<div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+<div class="card">
+<div class="card-body">
+<h5 class="font-weight-bold text-danger text-uppercase"></h5>
+       <h5 class="font-weight-bold text-danger text-uppercase">APIKEY CONTA:</h5> 
+<div class="row">
+<div class="col-9">
+<div class="d-flex align-items-center align-self-start">
+<h3 class="mb-0" ></h3>
+            <h6  id="apikey" class="mb-0"></h6>
+</div>
+</div>
+<div class="col-3">
+<div class="icon icon-box-success ">
+<span class="mdi mdi-cloud-check"></span>
+</div>
+</div>
+</div>
+
+<font face="Original Surfer" class="text-muted font-weight-normal"></font>
+</div>
+</div>
+<div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+	
+</div>
+</div>              
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+                            <style>
+/* Estilos para botões */
+.credits {
+background-color: #ffffff; 
+border-radius: 10px; 
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+padding: 20px; 
+max-width: 600px; 
+margin: 0 auto;
+	
+	}
+#reque {
+    background-color: #FF6347; /* Cor de fundo vermelha */
+    color: white; /* Cor do texto branco */
+    padding: 10px 20px; /* Espaçamento interno do botão menor */
+    text-align: center; /* Alinhamento do texto */
+    text-decoration: none; /* Remover sublinhado do texto */
+    display: block; /* Mostrar como bloco */
+    font-size: 14px; /* Tamanho da fonte menor */
+    margin-top: 10px; /* Margem superior */
+    cursor: pointer; /* Cursor do mouse estilo ponteiro */
+    border-radius: 5px; /* Borda arredondada */
+    border: none; /* Sem borda */
+    transition: background-color 0.3s ease; /* Transição suave da cor de fundo */
+    font-family: 'Roboto', sans-serif; /* Fonte do Google Fonts */
+}
+
+/* Estilizar o botão quando o mouse passar por cima */
+#reque:hover {
+    background-color: #CD5C5C; /* Cor de fundo mais escura */
+}
+
+/* Estilos para inputs */
+input[type="text"], input[type="password"], input[type="email"] {
+    background-color: #FFFFFF; /* Cor de fundo branca */
+    color: black; /* Cor do texto preto */
+    padding: 15px; /* Espaçamento interno do input */
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Borda arredondada */
+    transition: background-color 0.3s ease; /* Transição suave da cor de fundo */
+    font-family: 'Roboto', sans-serif; /* Fonte do Google Fonts */
+}
+
+/* Estilizar o input quando estiver focado */
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+    background-color: #E0E0E0; /* Cor de fundo mais clara quando focado */
+}
+</style>
+
+
+<div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="font-weight-bold text-danger text-uppercase">ADICIONAR APIKEY EM CONTA�</h5>
+            <div class="row">
+                <div class="col-9">
+                    <div class="d-flex align-items-center align-self-start">
+                        <h3 class="mb-0">
+
+                        </h3>
+                        <input type="text" id="requestin" placeholder="Insira sua APIKEY">
+
+                    </div>
+                                            <button id="reque" onclick="verificar()">ADICIONAR APIKEY</button>
+                                            <br>
+                </div>
+                <div class="col-3">
+                    <div class="icon icon-box-success">
+                        <span class="mdi mdi-cloud-check"></span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-muted font-weight-normal">Nova apikey - conta</p>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    function verificar() {
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+    }
+
+    const userID2 = getCookie('userID');
+    const apikey = document.getElementById("requestin").value;
+
+    if (!userID2) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Erro',
+            text: 'Usuario n�o autenticado.'
+        });
+        return;
+    }
+
+    if (!apikey) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Erro',
+            text: 'Por favor, forneca uma apikey.'
+        });
+        return;
+    }
+
+    // Fazendo a solicitação para /apikey
+    fetch(`/apikey?apikey=${apikey}&id=${userID2}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao adicionar a API key.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Exibindo as informações recebidas em formato JSON usando o SweetAlert
+            if (data.message && data.message.includes("✅")) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'APIKEY ADICIONADA NA CONTA COM SUCESSO',
+                    text: data.message,
+                    html: JSON.stringify(data.key, null, 2)
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'APIKEY DESATIVADA OU SEM REQUETS',
+                    text: `ERRO, Sua apikey ou esta desativada ou est� sem request`,
+                    html: JSON.stringify(data.error, null, 2)
+                });
+            }
+        })
+        .catch(error => {
+            // Exibindo mensagem de erro em caso de falha na solicitação
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: error.message
+            });
+        });
+}
+</script>
+	
+	    <style>
+        .btn-custom {
+            background-color: #6f42c1;
+            color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .btn-custom:hover {
+            background-color: #5a32a3;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
+        .card-custom {
+            width: 100%;
+            max-width: 700px;
+            margin: auto;
+        }
+    </style>
+    
+
+<script>
+  async function fetchUserCount() {
+    try {
+      const response = await fetch('/api/users/count');
+      const data = await response.json();
+
+      if (data.count !== undefined) {
+        document.getElementById('userCount').textContent = data.count;
+      } else {
+        console.error('Erro ao obter a contagem de usuários:', data.error || 'Erro desconhecido');
+      }
+    } catch (error) {
+      console.error('Erro ao fazer a requisição:', error.message);
+    } eu
+  }
+
+  // Atualiza a contagem inicialmente
+  fetchUserCount();
+
+  // Atualiza a contagem a cada 100 segundos
+  setInterval(fetchUserCount, 100000); // 100 segundos
+</script>
+
+
+    
+
+	<font face="Original Surfer" class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © <span id="Years">2024 </span>『 By vix zap 』</font>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>   
+<!-- WhatsApp Button -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="https://api.whatsapp.com/send?phone=18092572502&text=Preciso%20de%20suporte." class="float" target="_blank">
+<i class="fa fa-whatsapp" style="font-size: 30px;"></i>
+</a>
+</div>
+<style>
+  .float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .float:hover {
+    background-color: #128C7E;
+    box-shadow: 3px 3px 5px #666;
+    transform: scale(1.1);
+  }
+</style>
+
+
+<script src="vendors/js/vendor.bundle.base.js"></script>
+<script src="vendors/owl-carousel-2/owl.carousel.min.js"></script>
+<script src="k/vendor.bundle.base.js"></script>
+<script src="k/owl.carousel.min.js"></script>
+<script src="js/off-canvas.js"></script>
+<script src="js/hoverable-collapse.js"></script>
+<script src="js/misc.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/todolist.js"></script>
+</head>
+</body>

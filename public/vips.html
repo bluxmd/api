@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIPS SANDRO API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Fundo totalmente escuro */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Impede rolagem */
+            position: relative; /* Necessário para posicionar as bolinhas */
+        }
+        .ranking-container {
+            width: 100%; /* Ocupar 100% da largura */
+            height: 100%; /* Ocupar 100% da altura */
+            background-color: rgba(20, 20, 20, 0.95); /* Fundo mais escuro com leve transparência */
+            border-radius: 0; /* Sem bordas arredondadas */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            overflow-y: auto; /* Adiciona rolagem se necessário */
+            z-index: 1; /* Para ficar acima das bolinhas */
+        }
+        .ranking-title {
+            font-size: 2.5em; /* Tamanho maior do título */
+            animation: colorChange 5s infinite; /* Título com mudança de cor automática */
+            margin-bottom: 20px;
+        }
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 15px; /* Aumentar o espaçamento */
+            border-bottom: 1px solid #333;
+        }
+        .ranking-item img {
+            width: 80px; /* Aumentar o tamanho da imagem */
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 3px solid; 
+            animation: borderColorChange 5s infinite; /* Animação da borda */
+        }
+        .ranking-item h3 {
+            margin: 0;
+            font-size: 1.5em; /* Tamanho maior do nome */
+            color: #fff; 
+        }
+        .ranking-item span {
+            margin-left: auto;
+            font-size: 1.2em; /* Tamanho maior para a posição */
+            animation: colorChange 5s infinite; /* Animação da cor da posição */
+        }
+
+        /* Estilo das bolinhas */
+        .ball {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.8);
+            animation: fall linear;
+        }
+
+        /* Animação para a queda das bolinhas */
+        @keyframes fall {
+            0% { transform: translateY(-100px); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* Animação para a mudança de cor, passando por todas as cores */
+        @keyframes colorChange {
+            0% { color: #ff4500; }   /* Laranja */
+            12% { color: #ffdd00; }  /* Amarelo */
+            24% { color: #00ff00; }  /* Verde */
+            36% { color: #00aaff; }  /* Azul */
+            48% { color: #8a2be2; }  /* Roxo */
+            60% { color: #ff1493; }  /* Rosa */
+            72% { color: #ff6347; }  /* Tomate */
+            84% { color: #ff00ff; }  /* Magenta */
+            96% { color: #00ffff; }  /* Ciano */
+            100% { color: #ff4500; } /* Volta para Laranja */
+        }
+
+        /* Animação para a borda das imagens, passando pelas mesmas cores */
+        @keyframes borderColorChange {
+            0% { border-color: #ff4500; }   /* Laranja */
+            12% { border-color: #ffdd00; }  /* Amarelo */
+            24% { border-color: #00ff00; }  /* Verde */
+            36% { border-color: #00aaff; }  /* Azul */
+            48% { border-color: #8a2be2; }  /* Roxo */
+            60% { border-color: #ff1493; }  /* Rosa */
+            72% { border-color: #ff6347; }  /* Tomate */
+            84% { border-color: #ff00ff; }  /* Magenta */
+            96% { border-color: #00ffff; }  /* Ciano */
+            100% { border-color: #ff4500; } /* Volta para Laranja */
+        }
+    </style>
+</head>
+<body>
+
+<div class="ranking-container">
+    <h1 class="ranking-title">USUÁRIOS VIP</h1>
+
+    <div class="ranking-item">
+        <img src="https://i.imgur.com/0f4dsyV.jpeg" alt="Pessoa 1">
+        <h3>blackzin</h3>
+        <span>#1</span>
+    </div>
+
+
+    <!-- Adicione mais pessoas ao ranking conforme necessário -->
+
+</div>
+
+<script>
+    const createBall = () => {
+        const ball = document.createElement('div');
+        const size = Math.random() * 20 + 10; // Tamanho aleatório da bolinha
+        ball.classList.add('ball');
+        ball.style.width = `${size}px`;
+        ball.style.height = `${size}px`;
+        ball.style.left = `${Math.random() * 100}vw`; // Posição aleatória em X
+        ball.style.animationDuration = `${Math.random() * 2 + 3}s`; // Duração aleatória da animação
+        document.body.appendChild(ball);
+
+        // Remove a bolinha após a animação
+        ball.addEventListener('animationend', () => {
+            ball.remove();
+        });
+    };
+
+    let intervalId;
+    
+    // Inicia a animação de bolinhas
+    const startFalling = () => {
+        intervalId = setInterval(createBall, 500); // Intervalo entre a criação das bolinhas
+    };
+
+    // Para a animação de bolinhas
+    const stopFalling = () => {
+        clearInterval(intervalId);
+    };
+
+    // Começa a animação ao carregar a página
+    window.onload = startFalling;
+
+    // Para a animação ao minimizar ou mudar de aba
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stopFalling();
+        } else {
+            startFalling();
+        }
+    });
+</script>
+
+</body>
+</html>

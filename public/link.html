@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Mensagem pelo WhatsApp</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; /* Fundo escuro padrão */
+            color: #ffffff; /* Texto branco padrão */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s; /* Transição suave */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 24px; /* Tamanho do título */
+        }
+
+        form {
+            background-color: #1e1e1e; /* Fundo do formulário */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 400px; /* Largura máxima do formulário */
+            transition: transform 0.3s;
+        }
+
+        form:hover {
+            transform: scale(1.02); /* Efeito de zoom ao passar o mouse */
+        }
+
+        label {
+            margin-bottom: 5px;
+            display: block;
+            font-weight: bold; /* Negrito para os rótulos */
+        }
+
+        input[type="text"] {
+            width: 100%; /* Largura total */
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background-color: #2c2c2c; /* Fundo dos inputs */
+            color: #ffffff; /* Texto nos inputs */
+            font-size: 16px; /* Tamanho da fonte nos inputs */
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #ff4d4d; /* Cor da borda ao focar */
+            outline: none; /* Remove contorno padrão */
+        }
+
+        input[type="submit"], 
+        button {
+            background-color: #ff4d4d; /* Cor vermelha para os botões */
+            color: white; /* Texto do botão */
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.1s; /* Transição para o fundo e transformação */
+            width: 100%; /* Largura total */
+            margin-bottom: 10px; /* Espaçamento entre botões */
+            font-weight: bold; /* Negrito para o texto do botão */
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #cc0000; /* Cor do botão ao passar o mouse */
+        }
+
+        input[type="submit"]:active,
+        button:active {
+            transform: scale(0.95); /* Animação de "afundar" ao clicar */
+        }
+
+        .direitos-reservados {
+            margin-top: 20px;
+            font-size: 14px; /* Tamanho do texto dos direitos reservados */
+            color: #aaaaaa; /* Cor mais clara para o texto */
+            text-align: center; /* Centraliza o texto */
+        }
+
+        .tema-botao {
+            margin-bottom: 10px; /* Espaçamento ajustado */
+            padding: 12px; /* Mesmo padding que os outros botões */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #ff4d4d; /* Cor vermelha para o botão de tema */
+            color: white;
+            transition: background-color 0.3s, transform 0.1s; /* Transição para o fundo e transformação */
+            width: 100%; /* Largura total */
+        }
+
+        .tema-botao:hover {
+            background-color: #cc0000; /* Cor ao passar o mouse */
+        }
+
+        .tema-botao:active {
+            transform: scale(0.95); /* Animação de "afundar" ao clicar */
+        }
+
+        /* Estilos do tema claro */
+        body.claro {
+            background-color: #ffffff; /* Fundo claro */
+            color: #000000; /* Texto escuro */
+        }
+
+        body.claro form {
+            background-color: #f0f0f0; /* Fundo claro do formulário */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra mais leve */
+        }
+
+        body.claro input[type="text"] {
+            background-color: #ffffff; /* Fundo dos inputs claros */
+            color: #000000; /* Texto escuro nos inputs */
+            border: 1px solid #ccc; /* Borda clara */
+        }
+
+        body.claro input[type="text"]:focus {
+            border-color: #ff4d4d; /* Cor da borda ao focar no tema claro */
+        }
+
+        @media (max-width: 500px) {
+            form {
+                width: 90%; /* Largura responsiva em dispositivos menores */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Enviar Mensagem pelo WhatsApp</h1>
+
+    <button class="tema-botao" id="toggleTema">Alternar Tema</button>
+
+    <form id="whatsappForm">
+        <label for="numero">Seu Número (com DDD):</label>
+        <input type="text" id="numero" name="numero" placeholder="Ex: 5511999999999" required>
+        <label for="mensagem">Mensagem:</label>
+        <input type="text" id="mensagem" name="mensagem" placeholder="Digite sua mensagem" required>
+        <input type="submit" value="Enviar pelo WhatsApp">
+        <button type="button" id="copiarLink">Copiar Link</button>
+    </form>
+
+    <div class="direitos-reservados">
+        Todos os direitos reservados para Sandro Bot
+    </div>
+
+    <script>
+        // Função para alternar o tema
+        document.getElementById('toggleTema').onclick = function() {
+            document.body.classList.toggle('claro');
+        };
+
+        document.getElementById('whatsappForm').onsubmit = function(e) {
+            e.preventDefault(); // Evita o envio do formulário padrão
+
+            var numero = document.getElementById('numero').value;
+            var mensagem = document.getElementById('mensagem').value;
+
+            // Cria o link do WhatsApp
+            var link = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensagem);
+
+            // Redireciona para o link do WhatsApp
+            window.location.href = link;
+        }
+
+        document.getElementById('copiarLink').onclick = function() {
+            var numero = document.getElementById('numero').value;
+            var mensagem = document.getElementById('mensagem').value;
+
+            // Cria o link do WhatsApp
+            var link = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensagem);
+
+            // Copia o link para a área de transferência
+            navigator.clipboard.writeText(link).then(function() {
+                alert("Link copiado: " + link);
+            }, function(err) {
+                alert("Erro ao copiar o link: ", err);
+            });
+        }
+    </script>
+</body>
+</html>

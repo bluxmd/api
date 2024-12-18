@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝙋𝙇𝘼𝙉𝙊𝙎 𝘿𝙀 𝘼𝙋𝙄 𝙆𝙀𝙔</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #282828;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            color: #ff4c4c; /* Cor alterada para vermelho */
+            text-align: center;
+        }
+        p {
+            color: #ddd;
+            line-height: 1.6;
+        }
+        .terms {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .terms input {
+            margin-right: 10px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #ff4c4c; /* Cor alterada para vermelho */
+            color: black;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 0 10px;
+        }
+        button:hover {
+            background-color: #d13939; /* Cor alterada para um tom mais escuro de vermelho */
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Política de Privacidade</h2>
+        <p>• Atenção: Ao adquirir uma API Key, você concorda que não deve repassar ou compartilhar sua chave com terceiros. O repasse da API Key é estritamente proibido. O proprietário do site reserva-se o direito de remover sua API Key imediatamente, sem aviso prévio, se houver suspeita de compartilhamento não autorizado. Esta medida é necessária para proteger a integridade do serviço e garantir o uso justo das APIs.
+        </p>
+
+        <div class="terms">
+            <input type="checkbox" id="agree" required>
+            <label for="agree">Concordo com os termos</label>
+        </div>
+
+        <div class="button-container">
+            <button id="agreeButton" onclick="redirectToPurchase()">Concordar e Comprar</button>
+            <button onclick="goBack()">Voltar</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; blackzin
+    </div>
+
+    <script>
+        function redirectToPurchase() {
+            const checkbox = document.getElementById('agree');
+            if (checkbox.checked) {
+                alert('Ok escolha o plano que você quer'); // Aqui você pode adicionar lógica para processar a compra
+                window.location.href = 'politica_privacidade.html'; // Redirecionar para a página inicial
+            } else {
+                alert('Você precisa concordar com os termos para completar a compra.');
+            }
+        }
+
+        function goBack() {
+            window.history.back(); // Volta para a página anterior
+        }
+    </script>
+</body>
+</html>
